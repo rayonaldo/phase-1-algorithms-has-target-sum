@@ -13,6 +13,30 @@ function hasTargetSum(array, target) {
 /*
   Add written explanation of your solution here
 */
+function hasTargetSum(array, target){
+  let result = [] 
+  let numIndex = new Map (); //This will hold indexes of the array as they are looped through
+
+  for (i = 0; i < array.length; i++){
+    let num = array[i];
+    let compliment = target - num
+
+    if(numIndex.has(compliment)){
+      result[0]=numIndex.get(compliment);
+      result[1]=i;
+
+      if(result.length > 0){
+        return true
+      }   
+    }
+
+    numIndex.set(num,i) //adds the element of the array, and its index, to Map
+   //debugger;
+  }
+  //debugger;
+  return false
+
+};
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
